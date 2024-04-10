@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACKED?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-color: #000;
+            color: #0f0; /* Green text color */
+            font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 10vw;
+            color: transparent;
+            background: -webkit-linear-gradient(#00FF00, #008000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0;
+        }
+        #muteButton {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            font-size: 16px;
+            color: #000;
+            background-color: #0f0;
+            border: 2px solid #008000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup {
+            position: absolute;
+            padding: 5px 10px;
+            background: rgba(0, 255, 0, 0.7);
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            text-shadow: none;
+            animation: fadeInOut 5s linear infinite;
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        #hackerText {
+            text-align: left;
+            max-width: 80%;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HACKED?</h1>
+        <div id="hackerText"></div>
+        <button id="muteButton">Mute</button>
+    </div>
+
+    <script>
+        const muteButton = document.getElementById('muteButton');
+        muteButton.onclick = function() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                muteButton.textContent = "Mute";
+            } else {
+                bgMusic.pause();
+                muteButton.textContent = "Unmute";
+            }
+        };
+
+        // Typing effect
+        const messages = [
+            "System breach detected...\n",
+            "Uploading malware...\n",
+            "Encryption keys generated...\n",
+            "Data extraction in progress...\n",
+            "Uploading data to remote server...\n",
+            "System compromised...\n",
+            "Operation complete.\n"
+        ];
+        let messageIndex = 0;
+        let charIndex = 0;
+        const hackerText = document.getElementById('hackerText');
+
+        function typeMessage() {
+            if (messageIndex < messages.length) {
+                if (charIndex < messages[messageIndex].length) {
+                    hackerText.textContent += messages[messageIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeMessage, 50);
+                } else {
+                    hackerText.textContent += "\n"; // New line between messages
+                    messageIndex++;
+                    charIndex = 0;
+                    setTimeout(typeMessage, 500); // Wait before starting next message
+                }
+            }
+        }
+
+        // Start typing messages
+        setTimeout(typeMessage, 1000); // Initial delay before starting
+
+        // Function to create random pop-ups
+        function createPopup() {
+            const popup = document.createElement('div');
+            popup.classList.add('popup');
+            popup.textContent = "Data breach!";
+            document.body.appendChild(popup);
+
+            const x = Math.random() * (window.innerWidth - popup.clientWidth);
+            const y = Math.random() * (window.innerHeight - popup.clientHeight);
+            popup.style.left = `${x}px`;
+            popup.style.top = `${y}px`;
+
+            setTimeout(() => {
+                popup.remove();
+            }, 5000); // Remove popup after 5 seconds
+        }
+
+        // Create pop-ups at random intervals
+        setInterval(createPopup, 2000);
+    </script>
+</body>
+</html>
